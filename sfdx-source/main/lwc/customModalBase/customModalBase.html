@@ -1,0 +1,64 @@
+<template>
+    <div
+        class={modalBackdropCssClasses}
+        role="presentation"
+        data-backdrop=""
+    >
+        <section
+            class={modalCssClasses}
+            role="dialog"
+            tabindex="-1"
+            aria-modal="true"
+            data-modal=""
+            onkeydown={handleModalKeyDown}
+            onprivateclose={handlePrivateClose}
+            onprivatechildrender={handlePrivateChildRender}
+        >
+            <div
+                class="slds-modal__container"
+            >
+                <header class={customModalBaseHeaderClass}>
+                    <lightning-button-icon
+                        class={modalCloseButtonCssClasses}
+                        data-close-button=""
+                        icon-name="utility:close"
+                        variant="bare-inverse"
+                        alternative-text={closeButtonAltText}
+                        size="large"
+                        disabled={disableCloseButton}
+                        onclick={handleCloseClick}
+                    >
+                    </lightning-button-icon>
+                    <h2
+                        class="slds-modal__title slds-hyphenate"
+                        data-modal-heading=""
+                    >
+                        {label}
+                    </h2>
+                </header>
+                <div
+                    class={computedModalContentCssClasses}
+                    data-slot=""
+                    lwc:dom="manual"
+                >
+                </div>
+                <div
+                    class={customModalBaseFooterClass}
+                >
+                    <template for:each={computedButtons} for:item="button">
+                        <lightning-button
+                            key={button.name}
+                            data-name={button.name}
+                            label={button.label}
+                            class={button.className}
+                            variant={button.variant}
+                            disabled={button.disabled}
+                            onclick={handleButtonClick}
+                        >
+                        </lightning-button>
+                    </template>
+                </div>
+            </div>
+        </section>
+    </div>
+</template>

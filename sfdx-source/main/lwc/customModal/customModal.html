@@ -1,0 +1,12 @@
+<template>
+    <template if:true={message}>
+        <p>{message}</p>
+    </template>
+    <template if:true={fragment}>
+        <c-template-fragment
+            fragment={fragment}
+            onstatechange={handleFragmentStateChange}
+        >
+        </c-template-fragment>
+    </template>
+</template>
